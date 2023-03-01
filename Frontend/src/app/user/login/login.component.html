@@ -1,0 +1,27 @@
+<form class="container d-flex flex-column justify-content-center align-content-center pt-4" novalidate>
+  <div class="mb-2">
+    <label for="exampleInputEmail1" class="form-label">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp"
+      formControlName="email">
+    <!-- <div id="emailHelp" class="form-text text-danger "
+      *ngIf="form.get('email')?.hasError('required') && form.get('email')?.touched">El email es obligatório.</div>
+    <div id="emailHelp" class="form-text text-danger "
+      *ngIf="form.get('email')?.hasError('email') && form.get('email')?.touched">El formato no es válido.</div> -->
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" name="password" formControlName="password">
+    <!-- <div id="emailHelp" class="form-text text-danger "
+      *ngIf="form.get('password')?.hasError('required') && form.get('password')?.touched">La contraseña es obligatória.
+    </div> -->
+  </div>
+  <!-- <div class="mb-3 form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+  </div> -->
+  <a [routerLink]="['/register']" class="mb-4 text-info">¿No tienes cuenta? Registrate aquí.</a>
+  <div class="container d-flex flex-column gap-4">
+    <button type="submit" class="btn btn-primary">Login</button>
+  </div>
+  <!-- <div id="emailHelp" class="form-text text-danger " *ngIf="mensajeError !== '' ">{{mensajeError}}</div> -->
+</form>

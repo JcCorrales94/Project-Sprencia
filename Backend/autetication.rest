@@ -1,3 +1,10 @@
+# ? Peticiones de API/USERS
+
+
+GET http://localhost:3000/api/users/
+
+###
+
 POST http://localhost:3000/api/users/register
 Content-Type: application/json
 
@@ -19,7 +26,21 @@ Content-Type: application/json
   "password": "jose23!34J"
 }
 
-
 ###
 
-GET http://localhost:3000/api/users/
+# ? Peticiones de API/CATALOG
+
+GET http://localhost:3000/api/catalog/
+
+
+### 
+POST http://localhost:3000/api/catalog/new
+Content-Type: application/json
+
+{
+  "image": "https://images.pexels.com/photos/4056723/pexels-photo-4056723.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  "description": "Clases de Yoga para la tercera edad, especializados en estiramientos articulares, relajación mental y conservación física. Además disponemos de un descuento del 20% para los primeros 10 alumnos. Disponemos de clases unicamente para mujeres.",
+  "summary": "Clases de Yoga para la tercera edad.",
+  "schedule": "M, X, F", 
+  "price": "19"
+}

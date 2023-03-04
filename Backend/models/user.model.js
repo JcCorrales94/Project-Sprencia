@@ -22,6 +22,12 @@ const getById = (id) => {
   return executeQueryOne(sql, arr)
 }
 
+const getAll = () => {
+  const sql = 'Select * from user'
+
+  return executeQuery(sql)
+}
+
 module.exports = {
-  create, getByEmail, getById
+  create, getByEmail, getById, getAll
 };

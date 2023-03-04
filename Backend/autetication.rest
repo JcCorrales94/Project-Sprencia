@@ -18,3 +18,8 @@ Content-Type: application/json
   "email": "Jose@sprencia.com",
   "password": "jose23!34J"
 }
+
+
+###
+
+GET http://localhost:3000/api/users/

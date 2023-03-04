@@ -4,6 +4,17 @@ const bcrypt = require('bcryptjs');
 const { body, validationResult } = require('express-validator');
 const { createToken } = require('../../helpers/utils');
 
+router.get('/', async (req, res) => {
+  try {
+    const users = await User.getAll();
+    res.json(users)
+
+  } catch (error) {
+    res.json({ error: error.message })
+  }
+})
+
+
 router.post('/register',
   body('name')
     .exists()
@@ -56,7 +67,7 @@ router.post('/login', async (req, res) => {
 
   // * ¿Existe el email en la BBDD?
 
-  const user = await User.getByEmail(email)
+  const user = await User.getByEmail(email);
   if (!user) {
     return res.json({ error: 'Error en email y/o contraseña (1)' }) //? Uso un indicador númerico para identificar en caso de error, donde se encuentra el error.
   }

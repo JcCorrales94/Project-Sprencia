@@ -1,5 +1,14 @@
 #!/usr/bin/env node
 
+// * Configuración .env
+// require('dotenv').config();
+
+// * Conexion a BBDD
+require('../config/db')
+
+
+
+
 /**
  * Module dependencies.
  */

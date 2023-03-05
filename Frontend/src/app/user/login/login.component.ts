@@ -12,27 +12,30 @@ import Swal from 'sweetalert2'
 export class LoginComponent {
   form: FormGroup;
   mensajeError: string = '';
-  hasError: Boolean
+
 
   constructor(private usersService: UsersService, private router: Router) {
     this.form = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required])
     })
-    this.hasError = false;
+
   }
 
   async onSubmit(): Promise<any> {
-    this.hasError = false;
+
 
     const response = await this.usersService.login(this.form.value);
 
     // * Comprobamos errores
 
     if (response.error) {
-      this.hasError = true;
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Error en usuario y/o contraseña',
+      })
     } else {
-      this.hasError = false;
       localStorage.setItem('token', response.token);
       Swal.fire({
         title: 'Login Correcto',

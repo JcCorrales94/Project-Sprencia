@@ -11,14 +11,25 @@ export class UsersService {
     this.baseUrl = 'http://localhost:3000/api/users'
   }
 
-  login(formValue: any): Promise<any> {
-    // const httpOptions = {
-    //   headers: new HttpHeaders({
-    //     'content-type': 'application/json'
-    //   })
-    // }
+  register(formValue: any): Promise<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'content-type': 'application/json'
+      })
+    }
     return lastValueFrom(
-      this.httpClient.post<any>(`${this.baseUrl}/login`, formValue)
+      this.httpClient.post<any>(`${this.baseUrl}/register`, formValue, httpOptions)
+    )
+  }
+
+  login(formValue: any): Promise<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'content-type': 'application/json'
+      })
+    }
+    return lastValueFrom(
+      this.httpClient.post<any>(`${this.baseUrl}/login`, formValue, httpOptions)
     )
   }
 }

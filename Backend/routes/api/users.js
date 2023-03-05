@@ -57,7 +57,7 @@ router.post('/register',
 
 
     } catch (error) {
-      res.json({ error: error.message })
+      res.json({ error: 'Ya existe una cuenta con ese correo electrónico.' })
     }
   }
 )

@@ -1,38 +1,45 @@
-<form class="container d-flex flex-column justify-content-center align-content-center pt-4" novalidate>
+<form class="container d-flex flex-column justify-content-center align-content-center pt-4" novalidate
+  [formGroup]="form" (ngSubmit)="onSubmit()">
   <div class="mb-2">
     <label for="name" class="form-label">Name</label>
     <input type="name" class="form-control" id="name" name="email" aria-describedby="name" formControlName="name">
-    <!-- <div id="emailHelp" class="form-text text-danger "
-      *ngIf="form.get('email')?.hasError('required') && form.get('name')?.touched">El nombre es obligatório.</div> -->
+    <div id="msgName" class="form-text text-danger "
+      *ngIf="form.get('name')?.hasError('required') && form.get('name')?.touched">El nombre es obligatório.</div>
   </div>
   <div class="mb-2">
     <label for="surname" class="form-label">Surname</label>
     <input type="surname" class="form-control" id="surname" name="surname" aria-describedby="surname"
       formControlName="surname">
-    <!-- <div id="emailHelp" class="form-text text-danger "
-      *ngIf="form.get('email')?.hasError('required') && form.get('surname')?.touched">El apellido es obligatório.</div> -->
+    <div id="msgSurname" class="form-text text-danger "
+      *ngIf="form.get('surname')?.hasError('required') && form.get('surname')?.touched">El apellido es obligatório.
+    </div>
   </div>
   <div class="mb-2">
     <label for="city" class="form-label">City</label>
     <input type="city" class="form-control" id="city" name="city" aria-describedby="city" formControlName="city">
-    <!-- <div id="emailHelp" class="form-text text-danger "
-      *ngIf="form.get('email')?.hasError('required') && form.get('email')?.touched">El email es obligatório.</div>-->
+    <div id="msgCity" class="form-text text-danger "
+      *ngIf="form.get('city')?.hasError('required') && form.get('city')?.touched">La ciudad es obligatória.</div>
   </div>
   <div class="mb-2">
     <label for="exampleInputEmail1" class="form-label">Email address</label>
     <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp"
       formControlName="email">
-    <!-- <div id="emailHelp" class="form-text text-danger "
+    <div id="msgEmail" class="form-text text-danger "
       *ngIf="form.get('email')?.hasError('required') && form.get('email')?.touched">El email es obligatório.</div>
-    <div id="emailHelp" class="form-text text-danger "
-      *ngIf="form.get('email')?.hasError('email') && form.get('email')?.touched">El formato no es válido.</div> -->
+    <div id="msgEmail2" class="form-text text-danger "
+      *ngIf="form.get('email')?.hasError('pattern') && form.get('email')?.touched">El formato no es válido. Ejemplo:
+      example@example.example</div>
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Password</label>
     <input type="password" class="form-control" id="exampleInputPassword1" name="password" formControlName="password">
-    <!-- <div id="emailHelp" class="form-text text-danger "
+    <div id="msgPassword" class="form-text text-danger "
       *ngIf="form.get('password')?.hasError('required') && form.get('password')?.touched">La contraseña es obligatória.
-    </div> -->
+    </div>
+    <div id="msgPassword" class="form-text text-danger "
+      *ngIf="form.get('password')?.hasError('pattern') && form.get('password')?.touched">El campo contraseña debe tener
+      como mínimo 8 caracteres, almenos un caracter numérico, una mayúscula y un caracter especial.
+    </div>
   </div>
   <!-- <div class="mb-3 form-check">
     <input type="checkbox" class="form-check-input" id="exampleCheck1">

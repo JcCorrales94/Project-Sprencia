@@ -43,7 +43,7 @@ const createToken = (user) => {
     status: user.status,
     exp_date: dayjs().add(60, 'minute').unix()
   }
-  return jwt.sign(payload, 'sprencia proyecto de la camara de comercio de Valencia y del Team Ironman')
+  return jwt.sign(payload, process.env.SECRET_KEY)
 }
 
 

@@ -2,6 +2,9 @@ const router = require('express').Router()
 const Catalog = require('../../models/catalog.model')
 const { body, validationResult } = require('express-validator')
 
+
+// * GET /catalog/ -> Muestra todas las actividades
+
 router.get('/', async (req, res) => {
   try {
     const users = await Catalog.getAll();
@@ -9,9 +12,18 @@ router.get('/', async (req, res) => {
   } catch (error) {
     res.json({ error: error.message })
   }
-})
+});
+
+// * GET /catalog/delete/:catalogId -> Eliminar una actividad por su ID
+
+router.get('/delete/:catalogId', async (req, res) => {
+  const catalogId = req.params['catalogId']
+  const deleteCatalog = await Catalog.deleteCatalog(catalogId)
+  res.redirect('/catalog')
+});
 
 
+// * POST /catalog/new -> Crea una actividad nueva
 
 router.post('/new',
   body('image')
@@ -45,8 +57,14 @@ router.post('/new',
     }
 
   }
-)
+);
 
+// * POST /catalog/update -> Modifica la información de una actividad
+
+router.post('/update', async (req, res) => {
+  const result = await Catalog.updateById(req.body.id, req.body)
+  res.redirect('/catalog')
+});
 
 
 

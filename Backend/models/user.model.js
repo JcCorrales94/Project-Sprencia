@@ -20,14 +20,28 @@ const getById = (id) => {
   const arr = [id]
 
   return executeQueryOne(sql, arr)
-}
+};
+
+const updateById = (userId, body) => {
+  const sql = 'update user set name = ?, surname = ?, city = ?, email = ?, password = ? where id = ?'
+  const arr = [body.name, body.surname, body.city, body.email, body.password, userId]
+
+  return executeQuery(sql, arr)
+};
+
+const updateByIdAdmin = (userId, body) => {
+  const sql = 'update user set name = ?, surname = ?, city = ?, email = ?, password = ?, role = ?, status = ? where id = ?'
+  const arr = [body.name, body.surname, body.city, body.email, body.password, body.role, body.status, userId]
+
+  return executeQuery(sql, arr)
+};
 
 const getAll = () => {
   const sql = 'Select * from user'
 
   return executeQuery(sql)
-}
+};
 
 module.exports = {
-  create, getByEmail, getById, getAll
+  create, getByEmail, getById, getAll, updateById, updateByIdAdmin
 };

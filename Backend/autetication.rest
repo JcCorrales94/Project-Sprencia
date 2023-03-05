@@ -9,11 +9,11 @@ POST http://localhost:3000/api/users/register
 Content-Type: application/json
 
 {
-  "name": "Jose",
+  "name": "Rocío",
   "surname": "Corrales",
   "city": "Cádiz",
-  "email": "Jose@sprencia.com",
-  "password": "jose23!34J"
+  "email": "Rocio@sprencia.com",
+  "password": "rocio23!34J"
 }
 
 ### 
@@ -43,4 +43,17 @@ Content-Type: application/json
   "summary": "Clases de Yoga para la tercera edad.",
   "schedule": "M, X, F", 
   "price": "19"
+}
+
+# ? Peticiones de API/comment
+###
+
+POST http://localhost:3000/api/comment/new
+Content-Type: application/json
+
+{
+  "user_id": "5",
+  "activity_id": "1",
+  "description": "Unas clases magníficas.",
+  "date": "2023-03-02"
 }

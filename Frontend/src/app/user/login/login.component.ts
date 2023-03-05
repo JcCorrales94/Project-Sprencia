@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { catchError, EMPTY } from 'rxjs'
 import { UsersService } from 'src/app/services/users.service';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-login',
@@ -29,7 +29,21 @@ export class LoginComponent {
 
     // * Comprobamos errores
 
-    console.log(response);
+    if (response.error) {
+      this.hasError = true;
+    } else {
+      this.hasError = false;
+      localStorage.setItem('token', response.token);
+      Swal.fire({
+        title: 'Login Correcto',
+        text: 'Bienvenido a SPRENCIA',
+        icon: 'success',
+        confirmButtonText: '¡Ok!'
+      })
+    }
+    if (response.token) {
+      this.router.navigate(['/home'])
+    }
 
   }
 

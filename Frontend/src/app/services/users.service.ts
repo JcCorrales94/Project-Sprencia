@@ -12,13 +12,13 @@ export class UsersService {
   }
 
   login(formValue: any): Promise<any> {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'content-type': 'application/json'
-      })
-    }
+    // const httpOptions = {
+    //   headers: new HttpHeaders({
+    //     'content-type': 'application/json'
+    //   })
+    // }
     return lastValueFrom(
-      this.httpClient.post<any>(`${this.baseUrl}/login`, formValue, httpOptions)
+      this.httpClient.post<any>(`${this.baseUrl}/login`, formValue)
     )
   }
 }

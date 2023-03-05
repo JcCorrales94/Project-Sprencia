@@ -8,15 +8,17 @@ import { lastValueFrom } from 'rxjs';
 export class UsersService {
   private baseUrl: string
   constructor(private httpClient: HttpClient) {
-    this.baseUrl = 'http://localhost:3000/api/users/'
+    this.baseUrl = 'http://localhost:3000/api/users'
   }
 
-  login(formValue: any) {
+  login(formValue: any): Promise<any> {
     const httpOptions = {
       headers: new HttpHeaders({
         'content-type': 'application/json'
       })
     }
-    return this.httpClient.post<any>(this.baseUrl + 'login', formValue, httpOptions)
+    return lastValueFrom(
+      this.httpClient.post<any>(`${this.baseUrl}/login`, formValue, httpOptions)
+    )
   }
 }

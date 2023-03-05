@@ -10,29 +10,27 @@ import { UsersService } from 'src/app/services/users.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  form!: FormGroup;
+  form: FormGroup;
   mensajeError: string = '';
+  hasError: Boolean
 
-  constructor(private usersService: UsersService, private router: Router) { }
-
-  ngOnInit(): void {
+  constructor(private usersService: UsersService, private router: Router) {
     this.form = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', Validators.required)
+      password: new FormControl('', [Validators.required])
     })
+    this.hasError = false;
   }
 
-  onSubmit() {
-    this.usersService.login(this.form.value).pipe(
-      catchError((e) => {
-        // * código si hay error
-        this.mensajeError = e.error.error
-        return EMPTY;
-      })
-    ).subscribe(datos => {
-      // * Código si todo ha ido bien
-      localStorage.setItem('token', datos.token);
-      this.router.navigate(['/home'])
-    })
+  async onSubmit(): Promise<any> {
+    this.hasError = false;
+
+    const response = await this.usersService.login(this.form.value);
+
+    // * Comprobamos errores
+
+    console.log(response);
+
   }
+
 }
